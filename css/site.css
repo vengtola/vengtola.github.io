@@ -1,0 +1,153 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+ min-height: 100%;
+}
+
+#playerContainer {
+    position: relative;
+}
+
+.mainPlayer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.player-overlay {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 30px 10px #9f2525;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 200;
+}
+
+#controllers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 8);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 170px;
+    z-index: 1000;
+}
+
+.control-button {
+    background: none;
+    color: #5050fb;
+    font-size: 70px;
+    border: none;
+}
+
+#unMuteButton {
+    box-sizing: border-box;
+    color: #5050fb;
+    font-size: 50px;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+    padding: 4px;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.slidecontainer {
+    width: 100%;
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    z-index: 1500;
+}
+
+.slider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(173, 190, 251, 0.5);
+    outline: none; /* Remove outline */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    width: 25px;
+    height: 25px;
+    background: #5050fb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    box-sizing: border-box;
+    width: 25px;
+    height: 25px;
+    background: #5050fb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* disable ionic icon title */
+ion-icon {
+    pointer-events: none;
+}
+
+.site-down {
+    position: fixed;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.site-down span {
+    font-size: 30px;
+    color: #ff0000;
+    text-shadow: 0 0 10px #000000;
+    margin-top: 100px;
+}
+
+.battery {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    color: #00ff00;
+    z-index: 1000;
+    font-size: 50px;
+}
