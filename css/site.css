@@ -59,11 +59,29 @@ body {
     z-index: 1000;
 }
 
+#controllersPlayer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: fixed;
+    bottom: 0;
+    left: 32px;
+    right: 0;
+    height: 80px;
+    z-index: 1000;
+}
+
 .control-button {
     background: none;
     color: #5050fb;
     font-size: 70px;
     border: none;
+	cursor: pointer;
+}
+
+#controllersPlayer > .control-button{
+    font-size: 32px;
 }
 
 #unMuteButton {

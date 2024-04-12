@@ -78,6 +78,17 @@
                 <ion-icon name="play-skip-forward-circle-outline"></ion-icon>
             </button>
         </div>
+        <div id="controllersPlayer" style="display: none;">
+            <button class="control-button" onclick="previousVideo(event);">
+                <ion-icon name="play-skip-back-circle-outline"></ion-icon>
+            </button>
+            <button class="control-button" onclick="playPause(event);">
+                <ion-icon name="pause-circle-outline"></ion-icon>
+            </button>
+            <button class="control-button" onclick="nextVideo(event);">
+                <ion-icon name="play-skip-forward-circle-outline"></ion-icon>
+            </button>
+        </div>
         <div class="slidecontainer">
             <input type="range" min="0" max="100" value="0" class="slider" id="playerSlider" onchange="seekVideoTo(event);">
         </div>

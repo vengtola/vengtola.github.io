@@ -13,6 +13,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var mainPlayer;
 var playerState;
 var controllers = document.getElementById('controllers');
+var controllersPlayer = document.getElementById('controllersPlayer');
 var unMuteButton = document.getElementById('unMuteButton');
 var playerSlider = document.getElementById('playerSlider');
 var firstClicked = false;
@@ -29,7 +30,7 @@ function onYouTubeIframeAPIReady() {
         playerVars: {
         listType:'playlist',
         list: 'PLkSrH7QmXCNWtY2YNc8QO_WOaHiZU6TxM',
-        autoplay: 1,
+        autoplay: 0,
         controls: 0,
         mute: 1, // 1 = hack to auto play start, Web Policy: auto start must be muted.
         playsinline: 1,
@@ -47,13 +48,18 @@ function onYouTubeIframeAPIReady() {
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-    event.target.playVideo();
     mainPlayer.setLoop(true);
     mainPlayer.setVolume(45);
-
+	
+	//event.target.playVideo();
+	// shuffer and play next
+	mainPlayer.setShuffle(true);
+	//mainPlayer.nextVideo();
+	mainPlayer.playVideo();
+	
     unMuteButton.style.visibility = 'visible';
     // update slider
-    setInterval(updateProgress, 500);
+    setInterval(updateProgress, 200);
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -77,10 +83,12 @@ function onPlayerStateChange(event) {
 
     if (event.data == YT.PlayerState.PLAYING) {
         controllers.style.visibility = 'hidden';
+        controllersPlayer.style.display = 'flex';
     }
 
     if (event.data == YT.PlayerState.PAUSED) {
         controllers.style.visibility = 'visible';
+        controllersPlayer.style.display = 'none';
     }
 }
 
@@ -140,9 +148,9 @@ function overlayClick(evt) {
     
     // for first auto play with mute
     if (!firstClicked && mainPlayer.isMuted()) {
-    mainPlayer.unMute();
-    unMuteButton.style.visibility = 'hidden';
-
+        mainPlayer.unMute();
+        unMuteButton.style.visibility = 'hidden';
+        controllersPlayer.style.display = 'flex';
     } else {
         if (playerState === YT.PlayerState.PLAYING ) {
             mainPlayer.pauseVideo();
@@ -152,6 +160,14 @@ function overlayClick(evt) {
     }
     
     firstClicked = true;
+}
+
+function playPause() {
+    if (mainPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+        mainPlayer.pauseVideo();
+    } else {
+        mainPlayer.playVideo();
+    }
 }
 
 function toggleMute(evt) {
