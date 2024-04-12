@@ -14,6 +14,7 @@ var mainPlayer;
 var playerState;
 var controllers = document.getElementById('controllers');
 var controllersPlayer = document.getElementById('controllersPlayer');
+var hideAdsOverlay = document.getElementById('hideAdsOverlay');
 var unMuteButton = document.getElementById('unMuteButton');
 var playerSlider = document.getElementById('playerSlider');
 var firstClicked = false;
@@ -82,11 +83,13 @@ function onPlayerStateChange(event) {
     }
 
     if (event.data == YT.PlayerState.PLAYING) {
+        hideAdsOverlay.style.visibility = 'hidden';
         controllers.style.visibility = 'hidden';
         controllersPlayer.style.display = 'flex';
     }
 
     if (event.data == YT.PlayerState.PAUSED) {
+        hideAdsOverlay.style.visibility = 'visible';
         controllers.style.visibility = 'visible';
         controllersPlayer.style.display = 'none';
     }
